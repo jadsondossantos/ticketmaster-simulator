@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: '22.x'
+          node-version: '24.14.1'
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -56,6 +56,19 @@ jobs:
         with:
           name: node-app
       
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24.14.1'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
