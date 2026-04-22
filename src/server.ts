@@ -480,5 +480,5 @@ if (fs.existsSync(uiDistDir)) {
   });
 }
 
-await server.listen({ port: PORT, host: "127.0.0.1" });
+await server.listen({ port: PORT, host: "0.0.0.0" });
 

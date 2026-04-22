@@ -23,11 +23,19 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build backend
+        run: pnpm run build
+
+      - name: Build frontend
+        run: cd ui && pnpm install && pnpm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
